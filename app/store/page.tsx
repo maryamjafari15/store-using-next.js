@@ -1,10 +1,76 @@
-import Container from '@/src/components/Container'
-import React from 'react'
+import Container from "@/src/components/Container";
+import ProductCard from "@/src/components/ProductCard";
+import React from "react";
 
 function store() {
+  const products = [
+    {
+      id: 1,
+      name: "Shoulder Top",
+      price: 32.0,
+      image: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isOutOfStock: false,
+    },
+    {
+      id: 2,
+      name: "Multicolor Shirt",
+      price: 50.0,
+      image: "https://images.unsplash.com/photo-1699275304012-ede4abe0abed?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isOutOfStock: false,
+    },
+    {
+      id: 3,
+      name: "Adidas T-Shirt",
+      price: 22.0,
+      image: "https://images.unsplash.com/photo-1621573094640-0b2391e9acec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isOutOfStock: false,
+    },
+    {
+      id: 4,
+      name: "Round-Neck T-Shirt",
+      price: 30.0,
+      image: "https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isOutOfStock: false,
+    },
+    {
+      id: 5,
+      name: "Kids Cap",
+      price: 19.0,
+      image: "https://images.unsplash.com/photo-1577130812359-05f8ecac4d4a?q=80&w=2086&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isOutOfStock: false,
+    },
+    {
+      id: 6,
+      name: "Jeans Jacket",
+      price: 48.0,
+      image: "https://media.istockphoto.com/id/471139647/photo/denim-jacket-with-path.jpg?s=2048x2048&w=is&k=20&c=SBBvmO83PRuykS-sq9vT9jVVhtoc2n9YmkJF31zPgzI=",
+      isOutOfStock: true,
+    },
+    {
+      id: 7,
+      name: "Office Bag",
+      price: 152.0,
+      image: "https://images.unsplash.com/photo-1623085151447-3761e3168f3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isOutOfStock: false,
+    },
+    {
+      id: 8,
+      name: "Casual Shoes",
+      price: 24.65,
+      image: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?q=80&w=2031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      isOutOfStock: true,
+    },
+  ];
   return (
-    <Container>store</Container>
-  )
+    <Container>
+      <h1 className='py-4'> store</h1>
+      <div className='grid grid-cols-4 gap-3'>
+        {products.map((data) => (
+          <ProductCard  key={data.id} {...data}/>
+        ))}
+      </div>
+    </Container>
+  );
 }
 
-export default store
+export default store;
