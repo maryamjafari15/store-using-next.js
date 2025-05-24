@@ -1,11 +1,12 @@
 import React from 'react'
 
-interface IProductCardProps {
+ export interface IProductCardProps {
     id: number,
       name: string,
       price: number,
       image: string,
       isOutOfStock: boolean,
+      description :string,
 }
 
 function ProductCard({image , name , price , isOutOfStock}: IProductCardProps) {
