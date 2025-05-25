@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Container from "./Container";
+import { ShoppingCart } from "lucide-react";
 
 function Navbar() {
   const pathname = usePathname();
@@ -19,16 +20,25 @@ function Navbar() {
   ];
   return (
     <Container>
-      {navLinks.map((item) => (
-        <Link
-          key={item.href}
-          className={`mr-4 ${pathname === item.href ? "text-sky-500" : ""}`}
-          href={item.href}
-        >
-          {" "}
-          {item.title}
-        </Link>
-      ))}
+      <div className='flex mt-3 justify-between'>
+        <div>
+          {navLinks.map((item) => (
+            <Link
+              key={item.href}
+              className={`mr-4 ${pathname === item.href ? "text-sky-500" : ""}`}
+              href={item.href}
+            >
+              {" "}
+              {item.title}
+            </Link>
+          ))}
+        </div>
+        <div>
+          <Link href="/cart">
+            <ShoppingCart />
+          </Link>
+        </div>
+      </div>
     </Container>
   );
 }
