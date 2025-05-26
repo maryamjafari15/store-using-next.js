@@ -1,3 +1,4 @@
+import AddToCart from "@/src/components/AddToCart";
 import Container from "@/src/components/Container";
 import { IProductCardProps } from "@/src/components/ProductCard";
 import React from "react";
@@ -59,11 +60,8 @@ async function product({ params }: IProductProps) {
             </ul>
           </div>
 
-          <p className='text-lg font-semibold'>Total Price: {data.price}</p>
-
-          <button className='bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition'>
-            ADD TO CART
-          </button>
+          <p className='text-lg font-semibold'> Total Price: {data.price}</p>
+          <AddToCart />
         </div>
       </div>
     </Container>
