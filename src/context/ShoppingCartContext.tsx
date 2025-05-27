@@ -1,29 +1,61 @@
-"use client"
-import { createContext, use, useContext, useState } from "react";
+"use client";
+import { createContext, useContext, useState } from "react";
 
 type ShoppingCartProps = {
-    children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
-type CartItem ={
-    id: number,
-    qty:number
-}
-type TShoppingCartContext ={
-  cartItem: CartItem[]
-}
+type CartItem = {
+  id: number;
+  qty: number;
+};
+type TShoppingCartContext = {
+  cartItem: CartItem[];
+  handleIncreaseProductQyt :(id:number)=>void;
+  getProductQty : (id:number) => number;
+  cartTotalQty :number;
+};
 
 const ShoppingCartCantext = createContext({} as TShoppingCartContext);
 
-export const useShoppingCartContext = ()=>{
+export const useShoppingCartContext = () => {
   return useContext(ShoppingCartCantext);
-}
+};
 
 export function ShoppingCartContextProvider({ children }: ShoppingCartProps) {
+  const [cartItem, setCartItem] = useState<CartItem[]>([]);
 
-    const [cartItem, setCartItem] =useState<CartItem[]>([])
+  const cartTotalQty = cartItem.reduce((totalqty , item)=>{
+    return totalqty + item.qty
+  },0)
+
+  const getProductQty = (id :number)=>{
+    return cartItem.find((item)=> item.id == id)?.qty || 0 ;
+  }
+
+  const handleIncreaseProductQyt = (id: number) => {
+    setCartItem((currentItem) => {
+      let isNotProductExist = currentItem.find((item) => item.id == id) == null;
+
+      if (isNotProductExist) {
+        return [...currentItem, { id: id, qty: 1 }];
+      } else {
+        return currentItem.map((item) => {
+          if (item.id == id) {
+            return {
+              ...item,
+              qty: item.qty + 1,
+            };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
+
   return (
-    <ShoppingCartCantext.Provider value={{cartItem}}>
+    <ShoppingCartCantext.Provider value={{ cartItem , handleIncreaseProductQyt , getProductQty ,cartTotalQty}}>
       {children}
     </ShoppingCartCantext.Provider>
   );

@@ -4,9 +4,11 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Container from "./Container";
 import { ShoppingCart } from "lucide-react";
+import { useShoppingCartContext } from "../context/ShoppingCartContext";
 
 function Navbar() {
   const pathname = usePathname();
+  const { cartTotalQty } = useShoppingCartContext();
 
   const navLinks = [
     {
@@ -33,10 +35,12 @@ function Navbar() {
             </Link>
           ))}
         </div>
-        <div>
-          <Link href="/cart">
+        <div className='flex justify-center items-center gap-1 mr-1'>
+         
+          <Link href='/cart'>
             <ShoppingCart />
           </Link>
+          <span className='px-3 py-1 bg-sky-100 rounded-full'>{cartTotalQty}</span>
         </div>
       </div>
     </Container>
