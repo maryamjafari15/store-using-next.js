@@ -7,13 +7,13 @@ interface IAddToCartProps {
 }
 
 function AddToCart( {id} : IAddToCartProps) {
-  const { cartItem, handleIncreaseProductQyt , getProductQty} = useShoppingCartContext();
+  const { cartItem, handleIncreaseProductQyt , getProductQty, handleDecreaseProductQty} = useShoppingCartContext();
 
   return (
     <div className='flex items-center space-x-4'>
       <div className='flex items-center border rounded-full px-3 py-2'>
         <button
-          
+          onClick={()=>handleDecreaseProductQty(parseInt(id))}
           className='text-xl font-bold px-2 text-gray-700 hover:text-red-500'
         >
           −

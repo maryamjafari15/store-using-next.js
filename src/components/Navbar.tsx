@@ -21,9 +21,11 @@ function Navbar() {
     },
   ];
   return (
-    <Container>
-      <div className='flex mt-3 justify-between'>
-        <div>
+    
+      <div className='sticky top-0 bg-white z-50 shadow-sm '>
+        <Container>
+        <div className="flex justify-between items-center py-4">
+        <div >
           {navLinks.map((item) => (
             <Link
               key={item.href}
@@ -42,8 +44,10 @@ function Navbar() {
           </Link>
           <span className='px-3 py-1 bg-sky-100 rounded-full'>{cartTotalQty}</span>
         </div>
+        </div>
+        </Container>
       </div>
-    </Container>
+    
   );
 }
 
