@@ -7,7 +7,7 @@ interface IAddToCartProps {
 }
 
 function AddToCart( {id} : IAddToCartProps) {
-  const { cartItem, handleIncreaseProductQyt , getProductQty, handleDecreaseProductQty} = useShoppingCartContext();
+  const { cartItem, handleIncreaseProductQyt , getProductQty, handleDecreaseProductQty, handleRemoveProduct} = useShoppingCartContext();
 
   return (
     <div className='flex items-center space-x-4'>
@@ -27,10 +27,10 @@ function AddToCart( {id} : IAddToCartProps) {
         </button>
       </div>
       <button
-        
+        onClick={()=> handleRemoveProduct(parseInt(id))}
         className='bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition'
       >
-        ADD TO CART
+        remove all
       </button>
     </div>
   );
